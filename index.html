@@ -71,13 +71,13 @@
         <form action="#">
             <div class="w-9/12 mt-7 mb-5 mx-auto">
                 <label for="username"
-                    class="block mb-2 text-lg font-medium text-gray-900 dark:text-white w-9/12">Username</label>
+                    class="block mb-2 text-lg font-medium text-gray-900 dark:text-white w-9/12"><i class="fa-solid fa-user"></i> Username</label>
                 <input type="text" id="username"
                     class="pl-5 bg-gray-50 border border-gray-300 text-gray-900 text-sm w-9/12 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="UserName" required />
             </div>
             <div class="w-9/12 mt-4 mb-5 mx-auto">
-                <label for="email" class="block mb-2 text-lg font-medium text-gray-900 dark:text-white w-9/12">Email
+                <label for="email" class="block mb-2 text-lg font-medium text-gray-900 dark:text-white w-9/12"><i class="fa-solid fa-envelope inline"></i> Email
                     Address</label>
                 <input type="email" id="email"
                     class="pl-5 bg-gray-50 border border-gray-300 text-gray-900 text-sm w-9/12 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -85,7 +85,7 @@
             </div>
             <div class="w-9/12 mt-4 mb-5 mx-auto">
                 <label for="password"
-                    class="block mb-2 text-lg font-medium text-gray-900 dark:text-white w-9/12">Password</label>
+                    class="block mb-2 text-lg font-medium text-gray-900 dark:text-white w-9/12"><i class="fa-solid fa-lock"></i> Password</label>
                 <input type="password" id="password"
                     class="pl-5 bg-gray-50 border border-gray-300 text-gray-900 text-sm w-9/12 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Password" required />
@@ -215,7 +215,7 @@
                                         <div class="border-b border-slate-200">
                                             <button onclick="toggleAccordion(1)"
                                                 class="w-full flex justify-between items-center py-5 text-slate-800">
-                                                <span class="icon">HTML5</span>
+                                                <span id="html5" class="icon">HTML5</span>
                                                 <!-- <span id="icon-1" class="text-slate-800 transition-transform duration-300">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
                                                   <path fill-rule="evenodd" d="M11.78 9.78a.75.75 0 0 1-1.06 0L8 7.06 5.28 9.78a.75.75 0 0 1-1.06-1.06l3.25-3.25a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06Z" clip-rule="evenodd" />
@@ -247,7 +247,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="2">
-                                                                    <button class="theme-btn" onclick="startQuiz()">Continue</button>
+                                                                    <button class="theme-btn" onclick="startQuiz('html5')">Continue</button>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -261,7 +261,7 @@
                                         <div class="border-b border-slate-200">
                                             <button onclick="toggleAccordion(2)"
                                                 class="w-full flex justify-between items-center py-5 text-slate-800">
-                                                <span class="icon">CSS3</span>
+                                                <span id="css3" class="icon">CSS3</span>
                                                 <!-- <span id="icon-2" class="text-slate-800 transition-transform duration-300">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
                                                   <path fill-rule="evenodd" d="M11.78 9.78a.75.75 0 0 1-1.06 0L8 7.06 5.28 9.78a.75.75 0 0 1-1.06-1.06l3.25-3.25a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06Z" clip-rule="evenodd" />
@@ -293,7 +293,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="2">
-                                                                    <button class="theme-btn" onclick="startQuiz()">Continue</button>
+                                                                    <button class="theme-btn" onclick="startQuiz('css3')">Continue</button>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -306,7 +306,7 @@
                                         <div class="border-slate-200">
                                             <button onclick="toggleAccordion(3)"
                                                 class="w-full flex justify-between items-center py-5 text-slate-800">
-                                                <span class="icon">Javascript</span>
+                                                <span id="javascript" class="icon">Javascript</span>
                                                 <!-- <span id="icon-3" class="text-slate-800 transition-transform duration-300">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
                                                   <path fill-rule="evenodd" d="M11.78 9.78a.75.75 0 0 1-1.06 0L8 7.06 5.28 9.78a.75.75 0 0 1-1.06-1.06l3.25-3.25a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06Z" clip-rule="evenodd" />
@@ -338,7 +338,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="2">
-                                                                    <button class="theme-btn" onclick="startQuiz()">Continue</button>
+                                                                    <button class="theme-btn" onclick="startQuiz('javascript')">Continue</button>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -394,6 +394,63 @@
                         <label class="text-xl" for="option4" id="label4">4</label>
                     </div>
                     <button id="submit-btn" onclick="next()" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 text-xl tracking-wider mt-3">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div id="resultPage" class="hidden w-full mx-auto">
+        <div class="mx-auto" style="background-color: #10266b ;">
+            <nav class="flex justify-between items-center px-7 py-4">
+                <a href="#">
+                    <img src="./assest/logo.png" width="70" alt="">
+                </a>
+                <div>
+                    <div class="flex items-center">
+                        <div class="text-white"><i class="fa-solid fa-user text-4xl"></i></div>
+                        <div class="text-white mt-3 ml-4 capitalize" id="resultUserName"></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div style="background-color: #e9ecef; padding: 30px 0px 50px" class="w-full sm:w-auto">
+            <div class="2xl:container mx-5 sm:mx-8">
+                <div class="flex">
+                    <div class="w-full">
+                        <div class="columns justify-left w-7/12 mx-auto">
+                            <h1 class="text-4xl mb-2" style="color:#0d6db7; font-family: 'Josefin Sans', sans-serif; font-weight: 300;"><span id="resultCourseHeading" class="capitalize"></span></h1>
+                        </div>
+                        <hr class="w-7/12 mx-auto h-px my-4 bg-slate-500 border-0 rounded dark:bg-gray-700">
+                        <div class="2xl:container flex flex-row flex-wrap justify-center">
+                            <div class="columns w-7/12 text-center">
+                                <div class="flex flex-col justify-center items-center relative rounded-2xl">
+                                    <div class="p-4 absolute top-5" style="max-width: 520px;">
+                                        <h4 id="greeting" class="hidden mb-2 text-2xl p-3 text-green-500 border-b border-slate-500">Congratulation ! You Passed.</h4>
+                                        <h4 id="greetingFail" class="hidden mb-2 text-2xl p-3 text-red-500 border-b border-slate-500">Better Luck Next Time ! You Failed.</h4>
+                                        <div class="flex justify-between mt-1 p-3 border-b border-slate-500">
+                                            <p class="text-lg">Total  Questions</p>
+                                            <p id="totalQuestion" class="text-lg">15</p>
+                                        </div>
+                                        <div class="flex justify-between mt-1 p-3">
+                                            <p class="text-lg">Correct Questions</p>
+                                            <p id="correctQuestion" class="text-lg">5</p>
+                                        </div>
+                                        <div id="percentage" class="absolute start-2/4 top-full rounded-full -translate-x-1/2 w-20 h-20 border border-red-400 flex justify-center items-center">33%</div>
+                                        <!-- <button
+                                            class="py-3 px-12 w-full mt-9 bg-white hover:bg-blue-950 hover:text-white tracking-wider text-lg"
+                                            style="color: rgb(13.109.183); border: 1px solid rgb(13,109,183);" onclick="quizDashboard()">Join</button> -->
+                                    </div>
+                                </div>
+                                <button
+                                            class="py-1 px-2 mt-80 bg-white hover:bg-blue-950 hover:text-white tracking-wider text-lg"
+                                            style="color: rgb(13.109.183); border: 1px solid rgb(13,109,183);" onclick="homePage()">Back to Home</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

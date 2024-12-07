@@ -72,7 +72,7 @@ function loginDetails() {
                     document.getElementById('overlay').classList.add('hidden');
                     document.getElementById('main').classList.add('hidden')
                     document.getElementById('userName').innerHTML = userName;
-                    document.getElementById('emailFirstPart').innerHTML = ((email.split(/[0-9]/)[0]).split('.').join(' '));
+                    document.getElementById('emailFirstPart').innerHTML = (email.split('@')[0].split(/[0-9]/)[0].split('_')[0].split('.').join(' '));
 
                 }
                 else{
@@ -245,12 +245,13 @@ function deSelect() {
 function next() {
     var radioCheck = false;
     for (var i = 0; i < quizOption.length; i++) {
-        console.log(quizOption[i])
+        // console.log(quizOption[i])
         if (quizOption[i].checked) {
             radioCheck = true;
-            console.log('next')
+            // console.log('next')
             if (quizOption[i].value === questions[questionCount].answer) {
                 score++;
+                console.log(score)
             }
         }
     }
@@ -277,6 +278,40 @@ function next() {
     }
 }
 
+function showResult(){
+    var totalQuestion = questions.length;
+    var correctQuestion = score;
+    var percentage = (correctQuestion / totalQuestion) * 100;
+    document.getElementById('quizPage').classList.add('hidden');
+    document.getElementById('resultPage').classList.remove('hidden');
+    if(percentage > 33){
+        document.getElementById('resultCourseHeading').innerText = test_subject;
+        document.getElementById('greeting').classList.remove('hidden');
+        document.getElementById('totalQuestion').innerText = totalQuestion;
+        document.getElementById('correctQuestion').innerText = score;
+        document.getElementById('percentage').innerHTML = `${percentage}%`;
+    }
+    else{
+        document.getElementById('resultCourseHeading').innerText = test_subject;
+        document.getElementById('greeting').classList.add('hidden');
+        document.getElementById('greetingFail').classList.remove('hidden');
+        document.getElementById('totalQuestion').innerText = totalQuestion;
+        document.getElementById('correctQuestion').innerText = score;
+        document.getElementById('percentage').innerHTML = `${percentage}%`;
+        document.getElementById('resultUserName').innerText = userName;
+    }
+
+}
+
+function homePage(){
+    document.getElementById('main').classList.remove('hidden');
+    document.getElementById('signUpPage').classList.add('hidden');
+    document.getElementById('loginPage').classList.add('hidden');
+    document.getElementById('dashboard').classList.add('hidden');
+    document.getElementById('quizDashboard').classList.add('hidden');
+    document.getElementById('quizPage').classList.add('hidden');
+    document.getElementById('resultPage').classList.add('hidden');
+}
 
 function close_btn() {
     document.getElementById('signUpPage').classList.add('hidden');
@@ -294,14 +329,16 @@ function quizDashboard(){
     document.getElementById('quizDashboardUserName').innerText = userName;
     // console.log(userName);
 }
-
-function startQuiz(){
+var test_subject = '';
+function startQuiz(test){
     document.getElementById('quizDashboard').classList.add('hidden');
     document.getElementById('quizPage').classList.remove('hidden');
     document.getElementById('quizPageUserName').innerHTML = userName;
+    test_subject = document.getElementById(test).innerText;
+    // console.log(test_subject);
 }
 window.onload = renderQuestion();
 
 
 // email = 'engr.shahrukh786@gmail.com'
-// console.log((email.split(/[0-9]/)[0]).split('.').join(' '))
+// console.log(email.split('@')[0].split(/[0-9]/)[0].split('_')[0].split('.').join(' '))
