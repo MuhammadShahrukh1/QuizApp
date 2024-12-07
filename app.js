@@ -72,7 +72,9 @@ function loginDetails() {
                     document.getElementById('overlay').classList.add('hidden');
                     document.getElementById('main').classList.add('hidden')
                     document.getElementById('userName').innerHTML = userName;
-                    document.getElementById('emailFirstPart').innerHTML = (email.split('@')[0].split(/[0-9]/)[0].split('_')[0].split('.').join(' '));
+                    document.getElementById('emailFirstPart').innerHTML = (email.split('@')[0].split(/[0-9]/).join('').split('_').join(' ').split('.').join(' '));
+                    document.getElementById('loginPassword').value = '';
+                    document.getElementById('loginEmail').value = '';
 
                 }
                 else{
@@ -290,6 +292,7 @@ function showResult(){
         document.getElementById('totalQuestion').innerText = totalQuestion;
         document.getElementById('correctQuestion').innerText = score;
         document.getElementById('percentage').innerHTML = `${percentage}%`;
+        document.getElementById('resultUserName').innerText = userName;
     }
     else{
         document.getElementById('resultCourseHeading').innerText = test_subject;
@@ -340,5 +343,5 @@ function startQuiz(test){
 window.onload = renderQuestion();
 
 
-// email = 'engr.shahrukh786@gmail.com'
-// console.log(email.split('@')[0].split(/[0-9]/)[0].split('_')[0].split('.').join(' '))
+// email = 'engr.khan@gmail.com'
+// console.log(email.split('@')[0].split(/[0-9]/).join('').split('_').join(' ').split('.').join(' '))
