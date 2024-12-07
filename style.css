@@ -115,3 +115,21 @@ body{
     padding: 5px 20px;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 576px) {
+    .main-heading{
+        font-size: 3.5rem;
+        font-weight: 400;
+    }
+    .main-text{
+        font-size: 2rem;
+        line-height: 3rem;
+    }
+    .table{
+        width: 100%;
+        margin: 10px;
+    }
+    .table thead tr th{
+        width: 10px;
+    }
+}
