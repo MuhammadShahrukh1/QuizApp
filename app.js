@@ -1,3 +1,45 @@
+var body = document.getElementById('body');
+
+function modeChange() {
+    var state = localStorage.getItem('mode');
+    if (state === 'true') {
+        localStorage.setItem('mode', 'false');
+        body.classList.toggle('dark_mode')
+        document.getElementById('lightMode').classList.add('hidden');
+        document.getElementById('darkMode').classList.remove('hidden');
+
+    }
+    else {
+        localStorage.setItem('mode', 'true');
+        // body.classList.toggle('dark_mode', 'true')
+        body.className = ''
+        document.getElementById('lightMode').classList.remove('hidden');
+        document.getElementById('darkMode').classList.add('hidden');
+    }
+    // localStorage.setItem('mode', !state);
+    // body.classList.toggle('Dark_mode', !state)
+}
+function setDefault() {
+    var checkMode = localStorage.getItem('mode');
+    if (checkMode === null) {
+        localStorage.setItem('mode', 'true');
+        // body.classList.toggle('dark_mode')
+        document.getElementById('lightMode').classList.remove('hidden');
+        document.getElementById('darkMode').classList.add('hidden');
+        // modeChange();
+    }
+    else if (checkMode === 'false') {
+        body.classList.toggle('dark_mode')
+        document.getElementById('lightMode').classList.add('hidden');
+        document.getElementById('darkMode').classList.remove('hidden');
+    }
+    else {
+        body.className = ''
+        document.getElementById('lightMode').classList.remove('hidden');
+        document.getElementById('darkMode').classList.add('hidden');
+    }
+}
+
 
 function showSignupPage() {
     document.getElementById('signUpPage').classList.remove('hidden');
@@ -10,119 +52,184 @@ function showLoginPage() {
 var userName = '';
 var email = '';
 var password = '';
-var loginEmail = '';
+var loginUserName = '';
 var loginPassword = '';
+var userinfo = {};
+// console.log(JSON.parse(localStorage.getItem('userName')).username)
 function signupDetails() {
     userName = document.getElementById('username').value.toLowerCase();
-    if (userName.trim() !== '') {
-        email = document.getElementById('email').value.toLowerCase();
-        if (email.trim() !== '') {
-            password = document.getElementById('password').value;
-            if (password.trim() !== '') {
-                document.getElementById('signUpPage').classList.add('hidden');
-                document.getElementById('overlay').classList.add('hidden');
-                document.getElementById('username').value = '';
-                document.getElementById('email').value = '';
-                document.getElementById('password').value = '';
+    // console.log(JSON.parse(localStorage.getItem(userName)))
+    // console.log(JSON.parse(localStorage.getItem(userName)))
+    if (!Boolean(JSON.parse(localStorage.getItem(userName)))) {
+        if (userName.trim() !== '') {
+            email = document.getElementById('email').value.toLowerCase();
+            if (email.trim() !== '') {
+                password = document.getElementById('password').value;
+                if (password.trim() !== '') {
+                    userinfo.username = userName;
+                    userinfo.emailAddress = email;
+                    userinfo.userPassword = password;
+                    localStorage.setItem(userName, JSON.stringify(userinfo));
+                    document.getElementById('signUpPage').classList.add('hidden');
+                    document.getElementById('overlay').classList.add('hidden');
+                    document.getElementById('username').value = '';
+                    document.getElementById('email').value = '';
+                    document.getElementById('password').value = '';
+                }
+                else {
+                    swal.fire({
+                        title: 'Password?',
+                        text: 'Please Enter Password',
+                        icon: 'error'
+                    })
+                    document.getElementById('signUpPage').classList.remove('hidden');
+                    document.getElementById('overlay').classList.remove('hidden');
+                    document.getElementById('password').focus();
+                }
             }
             else {
                 swal.fire({
-                    title: 'Password?',
-                    text: 'Please Enter Password',
+                    title: 'Email?',
+                    text: 'Please Enter Address',
                     icon: 'error'
                 })
                 document.getElementById('signUpPage').classList.remove('hidden');
                 document.getElementById('overlay').classList.remove('hidden');
-                document.getElementById('password').focus();
+                document.getElementById('email').focus();
             }
         }
         else {
             swal.fire({
-                title: 'Email?',
-                text: 'Please Enter Address',
+                title: 'UserName',
+                text: 'Please Enter Username',
                 icon: 'error'
             })
             document.getElementById('signUpPage').classList.remove('hidden');
             document.getElementById('overlay').classList.remove('hidden');
-            document.getElementById('email').focus();
+            document.getElementById('username').focus();
         }
-    }
-    else {
+    } else {
         swal.fire({
             title: 'UserName',
-            text: 'Please Enter Username',
+            text: 'User Name is Already registered try other username',
             icon: 'error'
         })
         document.getElementById('signUpPage').classList.remove('hidden');
         document.getElementById('overlay').classList.remove('hidden');
         document.getElementById('username').focus();
+        document.getElementById('username').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('password').value = '';
     }
 
 }
+var localStorageObject = ''
+
 
 function loginDetails() {
-    loginEmail = document.getElementById('loginEmail').value.toLowerCase();
-    if (loginEmail.trim() !== '') {
-        loginPassword = document.getElementById('loginPassword').value.toLowerCase();
-        if(loginPassword.trim() !== ''){
-            if(loginEmail === email){
-                if(loginPassword === password){
-                    document.getElementById('dashboard').classList.remove('hidden');
-                    document.getElementById('loginPage').classList.add('hidden');
-                    document.getElementById('overlay').classList.add('hidden');
-                    document.getElementById('main').classList.add('hidden')
-                    document.getElementById('userName').innerHTML = userName;
-                    document.getElementById('emailFirstPart').innerHTML = (email.split('@')[0].split(/[0-9]/).join('').split('_').join(' ').split('.').join(' '));
-                    document.getElementById('loginPassword').value = '';
-                    document.getElementById('loginEmail').value = '';
+    loginUserName = document.getElementById('loginUserName').value.toLowerCase();
+    localStorageObject = JSON.parse(localStorage.getItem(loginUserName));
+    // console.log(Boolean(localStorageObject))
+    if (Boolean(localStorageObject)) {
 
+
+        // console.log(('score' in localStorageObject))
+        var localStorageUserName = JSON.parse(localStorage.getItem(loginUserName)).username;
+        var localStoragePassword = JSON.parse(localStorage.getItem(loginUserName)).userPassword;
+        var localStorageEmail = JSON.parse(localStorage.getItem(loginUserName)).emailAddress;
+        // console.log(localStotageUserName)
+        if (!('score' in localStorageObject)) {
+            if (loginUserName.trim() !== '') {
+                loginPassword = document.getElementById('loginPassword').value.toLowerCase();
+                if (loginPassword.trim() !== '') {
+                    if (loginUserName === localStorageUserName) {
+                        if (loginPassword === localStoragePassword) {
+                            document.getElementById('dashboard').classList.remove('hidden');
+                            document.getElementById('loginPage').classList.add('hidden');
+                            document.getElementById('overlay').classList.add('hidden');
+                            document.getElementById('main').classList.add('hidden')
+                            document.getElementById('dashboardNav').innerHTML = `
+                        <div class="text-white"><i class="fa-solid fa-user text-4xl"></i></div>
+                    <div class="text-white mt-3 ml-4 capitalize" id="userName"></div>`
+                            document.getElementById('userName').innerHTML = localStorageUserName;
+                            document.getElementById('emailFirstPart').innerHTML = (localStorageEmail.split('@')[0].split(/[0-9]/).join('').split('_').join(' ').split('.').join(' '));
+                            document.getElementById('loginPassword').value = '';
+                            document.getElementById('loginUserName').value = '';
+                            // console.log(document.getElementById('header'))
+                            // document.getElementById('header').classList.remove('hidden')
+                            console.log(document.getElementById('lightMode'))
+
+                        }
+                        else {
+                            swal.fire({
+                                title: 'Invalid Password',
+                                text: 'Enter Correct Password',
+                                icon: 'error'
+                            });
+                            document.getElementById('loginPage').classList.remove('hidden');
+                            document.getElementById('overlay').classList.remove('hidden');
+                            document.getElementById('loginPassword').value = '';
+                            document.getElementById('loginPassword').focus();
+
+                        }
+                    }
+                    else {
+                        swal.fire({
+                            title: 'Invalid User Name',
+                            text: 'Enter Valid User Name',
+                            icon: 'error'
+                        });
+                        document.getElementById('loginPage').classList.remove('hidden');
+                        document.getElementById('overlay').classList.remove('hidden');
+                        document.getElementById('loginUserName').value = '';
+                        document.getElementById('loginPassword').value = '';
+                        document.getElementById('loginUserName').focus();
+                    }
                 }
-                else{
+                else {
                     swal.fire({
-                        title : 'Invalid Password',
-                        text : 'Enter Correct Password',
-                        icon : 'error'
+                        title: 'Password?',
+                        text: 'Please Enter Password',
+                        icon: 'error'
                     });
                     document.getElementById('loginPage').classList.remove('hidden');
                     document.getElementById('overlay').classList.remove('hidden');
-                    document.getElementById('loginPassword').value = '';
                     document.getElementById('loginPassword').focus();
-
                 }
             }
-            else{
+            else {
                 swal.fire({
-                    title : 'Invalid Email',
-                    text : 'Enter Valid Email',
-                    icon : 'error'
+                    title: 'Username?',
+                    text: 'Please Enter UserName',
+                    icon: 'error'
                 });
                 document.getElementById('loginPage').classList.remove('hidden');
                 document.getElementById('overlay').classList.remove('hidden');
-                document.getElementById('loginEmail').value = '';
-                document.getElementById('loginPassword').value = '';
-                document.getElementById('loginEmail').focus();
+                document.getElementById('loginUserName').focus();
             }
-        }
-        else{
+        } else {
+            document.getElementById('resultPage').classList.remove('hidden');
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('overlay').classList.add('hidden');
+            document.getElementById('main').classList.add('hidden');
+            document.getElementById('loginPassword').value = '';
+            document.getElementById('loginUserName').value = '';
             swal.fire({
-                title: 'Password?',
-                text: 'Please Enter Password',
-                icon: 'error'
+                title: 'Already Attempted',
+                text: `Your score is ${localStorageObject.score}`,
+                icon: 'question'
             });
-            document.getElementById('loginPage').classList.remove('hidden');
-            document.getElementById('overlay').classList.remove('hidden');
-            document.getElementById('loginPassword').focus();
+            showResult()
         }
     }
     else {
         swal.fire({
-            title: 'Email?',
-            text: 'Please Enter Address',
-            icon: 'error'
-        });
-        document.getElementById('loginPage').classList.remove('hidden');
-        document.getElementById('overlay').classList.remove('hidden');
-        document.getElementById('loginEmail').focus();
+            title: 'InValid',
+            text: 'This User name is not exit in our data base first creat your Account',
+            icon: 'error',
+        })
+        document.getElementById('loginPassword').value = '';
+        document.getElementById('loginUserName').value = '';
     }
 }
 
@@ -275,45 +382,51 @@ function next() {
             }
         }
         else {
+            localStorageObject.score = score;
+            localStorage.setItem(loginUserName, JSON.stringify(localStorageObject))
             showResult();
         }
     }
 }
 
-function showResult(){
+function showResult() {
     var totalQuestion = questions.length;
-    var correctQuestion = score;
+    var correctQuestion = localStorageObject.score;
     var percentage = (correctQuestion / totalQuestion) * 100;
     document.getElementById('quizPage').classList.add('hidden');
     document.getElementById('resultPage').classList.remove('hidden');
-    if(percentage > 33){
-        document.getElementById('resultCourseHeading').innerText = test_subject;
+    // setDefault();
+    if (percentage > 33) {
+        document.getElementById('resultCourseHeading').innerText = localStorageObject.subject;
         document.getElementById('greeting').classList.remove('hidden');
         document.getElementById('totalQuestion').innerText = totalQuestion;
-        document.getElementById('correctQuestion').innerText = score;
+        document.getElementById('correctQuestion').innerText = localStorageObject.score;
         document.getElementById('percentage').innerHTML = `${percentage}%`;
-        document.getElementById('resultUserName').innerText = userName;
+        // document.getElementById('UserName').innerText = JSON.parse(localStorage.getItem(loginUserName)).username;
     }
-    else{
-        document.getElementById('resultCourseHeading').innerText = test_subject;
+    else {
+        document.getElementById('resultCourseHeading').innerText = localStorageObject.subject;
         document.getElementById('greeting').classList.add('hidden');
         document.getElementById('greetingFail').classList.remove('hidden');
         document.getElementById('totalQuestion').innerText = totalQuestion;
-        document.getElementById('correctQuestion').innerText = score;
+        document.getElementById('correctQuestion').innerText = localStorageObject.score;
         document.getElementById('percentage').innerHTML = `${percentage}%`;
-        document.getElementById('resultUserName').innerText = userName;
+        // document.getElementById('resultUserName').innerText = JSON.parse(localStorage.getItem(loginUserName)).username;
     }
 
 }
 
-function homePage(){
-    document.getElementById('main').classList.remove('hidden');
-    document.getElementById('signUpPage').classList.add('hidden');
-    document.getElementById('loginPage').classList.add('hidden');
-    document.getElementById('dashboard').classList.add('hidden');
-    document.getElementById('quizDashboard').classList.add('hidden');
-    document.getElementById('quizPage').classList.add('hidden');
-    document.getElementById('resultPage').classList.add('hidden');
+function homePage() {
+    // document.getElementById('main').classList.remove('hidden');
+    // document.getElementById('signUpPage').classList.add('hidden');
+    // document.getElementById('loginPage').classList.add('hidden');
+    // document.getElementById('dashboard').classList.add('hidden');
+    // document.getElementById('quizDashboard').classList.add('hidden');
+    // document.getElementById('quizPage').classList.add('hidden');
+    // document.getElementById('resultPage').classList.add('hidden');
+    // // var questionCount = 0;
+    // window.onload = './index.html';
+    window.location.href = './index.html'
 }
 
 function close_btn() {
@@ -323,25 +436,34 @@ function close_btn() {
 }
 
 
-function quizDashboard(){
-    var quizCourseSubjject = document.getElementById('webDevelopmentSubject').innerText;
+function quizDashboard() {
+    // setDefault();
+    var quizCourseSubject = document.getElementById('webDevelopmentSubject').innerText;
     document.getElementById('dashboard').classList.add('hidden');
     document.getElementById('quizDashboard').classList.remove('hidden');
     document.getElementById('quizCourse').innerHTML = document.getElementById('webDevelopment').innerText;
-    document.getElementById('quizCourseSubject').innerHTML = `(${quizCourseSubjject})`;
-    document.getElementById('quizDashboardUserName').innerText = userName;
+    document.getElementById('quizCourseSubject').innerHTML = `(${quizCourseSubject})`;
+    // document.getElementById('UserName').innerHTML = JSON.parse(localStorage.getItem(loginUserName)).username;
+    // function toggleAccordion(index) {
+    //     content = document.getElementById(`content-${index}`);
+    //     content.style.maxHeight = '0';
+    //     icon[index - 1].style.setProperty("--transform-degree", "rotate(315deg)");
+    // }
     // console.log(userName);
 }
 var test_subject = '';
-function startQuiz(test){
+function startQuiz(test) {
+    // setDefault();
     document.getElementById('quizDashboard').classList.add('hidden');
     document.getElementById('quizPage').classList.remove('hidden');
-    document.getElementById('quizPageUserName').innerHTML = userName;
+    // document.getElementById('userName').innerHTML = JSON.parse(localStorage.getItem(loginUserName)).username;
     test_subject = document.getElementById(test).innerText;
+    localStorageObject.subject = test_subject;
+    localStorage.setItem(loginUserName, JSON.stringify(localStorageObject))
     // console.log(test_subject);
 }
 window.onload = renderQuestion();
-
+window.onload = setDefault();
 
 // email = 'engr.khan@gmail.com'
 // console.log(email.split('@')[0].split(/[0-9]/).join('').split('_').join(' ').split('.').join(' '))

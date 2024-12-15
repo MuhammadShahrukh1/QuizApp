@@ -16,22 +16,28 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 
-<body style="background-color: #e9ecef;">
+<body style="" id="body">
+<header>
+    <div class="mx-auto" style="background-color: #10266b ;">
+        <nav class="flex justify-between items-center px-7 py-4">
+            <a href="#">
+                <img src="./assest/logo.png" width="70" alt="">
+            </a>
+            <div class="flex justify-center items-center">
+                <span id="dashboardNav" class="text-white fw-medium flex justify-center items-center">
+                    V 0.1 BETA
+                </span>
+                <button class="ml-4 w-14 h-14 rounded-full flex justify-center items-center" style="background-color: #e8e9ed;" onclick="modeChange()">
+                    <img style="fill:#3a435d" class="" src="./assest/darkmood.svg" alt="" id="darkMode">
+                    <img style="fill:#3a435d" class="" src="./assest/lightmood.svg" alt="" id="lightMode">
+                </button>
+            </div>
+        </nav>
+    </div>
+</header>
     <div id="main" class="w-full mx-auto">
-        <div class="mx-auto" style="background-color: #10266b ;">
-            <nav class="flex justify-between items-center px-7 py-4">
-                <a href="#">
-                    <img src="./assest/logo.png" width="70" alt="">
-                </a>
-                <div>
-                    <span class="text-white fw-medium">
-                        V 0.1 BETA
-                    </span>
-                </div>
-            </nav>
-        </div>
-        <div style="background-color: #e9ecef; padding: 30px 0px 50px">
-            <div class="2xl:container mx-12 sm:mx-8">
+        <div style="padding: 30px 0px 50px">
+            <div class="mx-12 sm:mx-8">
                 <div class="flex justify-center">
                     <div class="flex justify-center">
 
@@ -107,11 +113,10 @@
         <h2 class="text-4xl text-blue-500 font-bold text-center mt-12">Log In</h2>
         <form action="#">
             <div class="w-9/12 mt-4 mb-5 mx-auto">
-                <label for="loginEmail" class="block mb-2 text-lg font-medium text-gray-900 dark:text-white w-9/12"><i class="fa-solid fa-envelope inline"></i> Email
-                    Address</label>
-                <input type="email" id="loginEmail"
+                <label for="loginUserName" class="block mb-2 text-lg font-medium text-gray-900 dark:text-white w-9/12"><i class="fa-solid fa-envelope inline"></i> User Name</label>
+                <input type="text" id="loginUserName"
                     class="pl-5 bg-gray-50 border border-gray-300 text-gray-900 text-sm w-9/12 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Email Address" required />
+                    placeholder="User Name" required />
             </div>
             <div class="w-9/12 mt-4 mb-5 mx-auto">
                 <label for="loginPassword"
@@ -131,49 +136,52 @@
 
 
 
-
+<!-- <header id="header" class="hidden">
+    <div class="mx-auto" style="background-color: #10266b ;">
+        <nav class="flex justify-between items-center px-7 py-4">
+            <a href="#">
+                <img src="./assest/logo.png" width="70" alt="">
+            </a>
+            <div>
+                <div class="flex items-center">
+                    <div class="text-white"><i class="fa-solid fa-user text-4xl"></i></div>
+                    <div class="text-white mt-3 ml-4 capitalize" id="userName"></div>
+                    <button class="ml-4 w-14 h-14 rounded-full flex justify-center items-center" style="background-color: #e8e9ed;" onclick="modeChange()">
+                        <img style="fill:#3a435d" class="" src="./assest/darkmood.svg" alt="" id="darkMode">
+                        <img style="fill:#3a435d" class="" src="./assest/lightmood.svg" alt="" id="lightMode">
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header> -->
 
 
     <div id="dashboard" class="w-full mx-auto hidden">
-        <div class="mx-auto" style="background-color: #10266b ;">
-            <nav class="flex justify-between items-center px-7 py-4">
-                <a href="#">
-                    <img src="./assest/logo.png" width="70" alt="">
-                </a>
-                <div>
-                    <div class="flex items-center">
-                        <div class="text-white"><i class="fa-solid fa-user text-4xl"></i></div>
-                        <div class="text-white mt-3 ml-4 capitalize" id="userName"></div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        <div style="background-color: #e9ecef; padding: 30px 0px 50px" class="w-full sm:w-auto">
-            <div class="2xl:container mx-5 sm:mx-8">
-                <div class="flex">
-                    <div class="w-full">
-                        <div class="columns justify-left">
+        <div style="padding: 30px 0px 50px" class="w-full">
+            <div class="">
+                <div class="w-11/12 mx-auto">
+                        <div class="columns">
                             <h1 class="text-6xl mb-4" style="color:#0d6db7; font-family: 'Josefin Sans', sans-serif;">
                                 Hi, <span id="emailFirstPart" class="capitalize"></span></h1>
                             <span>Welcome to the SMIT's quiz portal. Select your course below to take a quiz.</span>
                         </div>
                         <hr class="w-full h-px my-8 bg-slate-500 border-0 rounded dark:bg-gray-700">
-                        <div class="2xl:container flex flex-row flex-wrap justify-center">
+                        <div class="flex flex-row flex-wrap justify-center">
                             <div class="columns w-80 ml-3">
                                 <div class="flex flex-col bg-white border rounded-2xl">
                                     <div class="flex-auto p-8">
-                                        <h4 id="webDevelopment" class="mb-2 text-lg">Web & Mobile App Development Course</h4>
+                                        <h4 id="webDevelopment" class="mb-2 text-lg text-black">Web & Mobile App Development Course</h4>
                                         <h6 id="webDevelopmentSubject" class="text-slate-400">
                                             1 Subject
                                         </h6>
                                         <button
                                             class="py-3 px-12 w-full mt-9 bg-white hover:bg-blue-950 hover:text-white tracking-wider text-lg"
-                                            style="color: rgb(13.109.183); border: 1px solid rgb(13,109,183);" onclick="quizDashboard()">Join</button>
+                                            style="color: rgb(13,109,183); border: 1px solid rgb(13,109,183);" onclick="quizDashboard()">Join</button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div>         
                 </div>
             </div>
         </div>
@@ -182,7 +190,7 @@
 
 
     <div id="quizDashboard" class="w-full mx-auto hidden">
-        <div class="mx-auto" style="background-color: #10266b ;">
+        <!-- <div class="mx-auto" style="background-color: #10266b ;">
             <nav class="flex justify-between items-center px-7 py-4">
                 <a href="#">
                     <img src="./assest/logo.png" width="70" alt="">
@@ -191,13 +199,17 @@
                     <div class="flex items-center">
                         <div class="text-white"><i class="fa-solid fa-user text-4xl"></i></div>
                         <div class="text-white mt-3 ml-4 capitalize" id="quizDashboardUserName"></div>
+                        <button class="ml-4 w-14 h-14 rounded-full flex justify-center items-center" style="background-color: #e8e9ed;" onclick="modeChange()">
+                            <img style="fill:#3a435d" class="" src="./assest/darkmood.svg" alt="" id="darkMode">
+                            <img style="fill:#3a435d" class="" src="./assest/lightmood.svg" alt="" id="lightMode">
+                        </button>
                     </div>
                 </div>
             </nav>
-        </div>
-        <div style="background-color: #e9ecef; padding: 30px 0px 50px" class="w-full sm:w-auto">
-            <div class="2xl:container mx-5 sm:mx-8">
-                <div class="flex">
+        </div> -->
+        <div style="padding: 30px 0px 50px" class="w-full">
+            <div class="mx-auto flex justify-center w-10/12">
+                <div class="flex w-full">
                     <div class="w-full">
                         <div class="columns">
                             <h1 class="text-5xl mb-4 text-center"
@@ -208,8 +220,8 @@
                             <!-- <span>Welcome to the SMIT's quiz portal. Select your course below to take a quiz.</span> -->
                         </div>
                         <hr class="w-full h-px my-8 bg-slate-500 border-0 rounded dark:bg-gray-700">
-                        <div class="2xl:container flex flex-row flex-wrap justify-center">
-                            <div class="columns w-10/12 ml-3">
+                        <div class="w-full flex flex-row flex-wrap justify-center">
+                            <div class="columns w-10/12">
                                 <div class="flex flex-col bg-white border rounded-2xl">
                                     <div class="flex-auto p-8 shadow-xl rounded-xl" style="background-color: #edeff0;">
                                         <div class="border-b border-slate-200">
@@ -223,8 +235,8 @@
                                               </span> -->
                                             </button>
                                             <div id="content-1"
-                                                class="max-h-0 ml-1 sm:ml-8 overflow-hidden transition-all duration-50 ease-in-out bg-white border border-b-0">
-                                                <div class="pb-1 mb-3 text-sm text-slate-500">
+                                                class="max-h-0 ml-0 sm:ml-8 overflow-hidden transition-all duration-50 ease-in-out bg-white border border-b-0">
+                                                <div class="pb-1 mb-0 sm:mb-3 text-sm text-slate-500">
                                                     <table class="table">
                                                         <thead>
                                                             <tr>
@@ -269,8 +281,8 @@
                                               </span> -->
                                             </button>
                                             <div id="content-2"
-                                                class="max-h-0 ml-8 overflow-hidden transition-all duration-50 ease-in-out bg-white border border-b-0">
-                                                <div class="pb-1 mb-3 text-sm text-slate-500">
+                                                class="max-h-0 ml-0 sm:ml-8 overflow-hidden transition-all duration-50 ease-in-out bg-white border border-b-0">
+                                                <div class="pb-1 mb-0 sm:mb-3 text-sm text-slate-500">
                                                     <table class="table">
                                                         <thead>
                                                             <tr>
@@ -314,8 +326,8 @@
                                               </span> -->
                                             </button>
                                             <div id="content-3"
-                                                class="max-h-0 ml-8 overflow-hidden transition-all duration-50 ease-in-out bg-white border border-b-0">
-                                                <div class="pb-1 mb-3 text-sm text-slate-500">
+                                                class="max-h-0 ml-0 sm:ml-8 overflow-hidden transition-all duration-50 ease-in-out bg-white border border-b-0">
+                                                <div class="pb-1 mb-0 sm:mb-3 text-sm text-slate-500">
                                                     <table class="table">
                                                         <thead>
                                                             <tr>
@@ -360,7 +372,7 @@
 
 
     <div id="quizPage" class="w-full mx-auto hidden">
-        <div class="mx-auto" style="background-color: #10266b ;">
+        <!-- <div class="mx-auto" style="background-color: #10266b ;">
             <nav class="flex justify-between items-center px-7 py-4">
                 <a href="#">
                     <img src="./assest/logo.png" width="70" alt="">
@@ -369,11 +381,15 @@
                     <div class="flex items-center">
                         <div class="text-white"><i class="fa-solid fa-user text-4xl"></i></div>
                         <div class="text-white mt-3 ml-4 capitalize" id="quizPageUserName"></div>
+                        <button class="ml-4 w-14 h-14 rounded-full flex justify-center items-center" style="background-color: #e8e9ed;" onclick="modeChange()">
+                            <img style="fill:#3a435d" class="" src="./assest/darkmood.svg" alt="" id="darkMode">
+                            <img style="fill:#3a435d" class="" src="./assest/lightmood.svg" alt="" id="lightMode">
+                        </button>
                     </div>
                 </div>
             </nav>
-        </div>
-        <div style="background-color: #e9ecef; padding: 30px 0px 0px" class="w-full sm:w-auto">
+        </div> -->
+        <div style="padding: 30px 0px 0px" class="w-full sm:w-auto">
             <div class="w-9/12 mx-auto">
                 <div id="quizWindow">
                     <h4 id="question" class="text-2xl border p-5 text-white rounded-xl" style="background-color: #10266b ;">Q1</h4>
@@ -403,8 +419,8 @@
 
 
 
-    <div id="resultPage" class="hidden w-full mx-auto">
-        <div class="mx-auto" style="background-color: #10266b ;">
+    <div id="resultPage" class="w-full mx-auto hidden">
+        <!-- <div class="mx-auto" style="background-color: #10266b ;">
             <nav class="flex justify-between items-center px-7 py-4">
                 <a href="#">
                     <img src="./assest/logo.png" width="70" alt="">
@@ -413,23 +429,27 @@
                     <div class="flex items-center">
                         <div class="text-white"><i class="fa-solid fa-user text-4xl"></i></div>
                         <div class="text-white mt-3 ml-4 capitalize" id="resultUserName"></div>
+                        <button class="ml-4 w-14 h-14 rounded-full flex justify-center items-center" style="background-color: #e8e9ed;" onclick="modeChange()">
+                            <img style="fill:#3a435d" class="" src="./assest/darkmood.svg" alt="" id="darkMode">
+                            <img style="fill:#3a435d" class="" src="./assest/lightmood.svg" alt="" id="lightMode">
+                        </button>
                     </div>
                 </div>
             </nav>
-        </div>
-        <div style="background-color: #e9ecef; padding: 30px 0px 50px" class="w-full sm:w-auto">
-            <div class="2xl:container mx-5 sm:mx-8">
-                <div class="flex">
-                    <div class="w-full">
-                        <div class="columns justify-left w-7/12 mx-auto">
-                            <h1 class="text-4xl mb-2" style="color:#0d6db7; font-family: 'Josefin Sans', sans-serif; font-weight: 300;"><span id="resultCourseHeading" class="capitalize"></span></h1>
+        </div> -->
+        <div style="padding: 30px 0px 50px" class="w-full">
+            <div class="">
+                <div class="flex justify-center">
+                    <div class="w-11/12">
+                        <div class="columns justify-left w-full sm:w-80 mx-auto">
+                            <h1 class="text-4xl mb-2 ml-2 sm:ml-0" style="color:#0d6db7; font-family: 'Josefin Sans', sans-serif; font-weight: 300;"><span id="resultCourseHeading" class="capitalize">HTML5</span></h1>
                         </div>
-                        <hr class="w-7/12 mx-auto h-px my-4 bg-slate-500 border-0 rounded dark:bg-gray-700">
-                        <div class="2xl:container flex flex-row flex-wrap justify-center">
-                            <div class="columns w-7/12 text-center">
+                        <hr class="w-full sm:w-96 mx-auto h-px my-4 bg-slate-500 border-0 rounded dark:bg-gray-700">
+                        <div class="flex flex-row flex-wrap justify-center">
+                            <div class="columns w-full sm:w-96 text-center">
                                 <div class="flex flex-col justify-center items-center relative rounded-2xl">
                                     <div class="p-4 absolute top-5" style="max-width: 520px;">
-                                        <h4 id="greeting" class="hidden mb-2 text-2xl p-3 text-green-500 border-b border-slate-500">Congratulation ! You Passed.</h4>
+                                        <h4 id="greeting" class="mb-2 text-2xl p-3 text-green-500 border-b border-slate-500">Congratulation ! You Passed.</h4>
                                         <h4 id="greetingFail" class="hidden mb-2 text-2xl p-3 text-red-500 border-b border-slate-500">Better Luck Next Time ! You Failed.</h4>
                                         <div class="flex justify-between mt-1 p-3 border-b border-slate-500">
                                             <p class="text-lg">Total  Questions</p>
@@ -437,17 +457,17 @@
                                         </div>
                                         <div class="flex justify-between mt-1 p-3">
                                             <p class="text-lg">Correct Questions</p>
-                                            <p id="correctQuestion" class="text-lg">5</p>
+                                            <p id="correctQuestion" class="text-lg">10</p>
                                         </div>
-                                        <div id="percentage" class="absolute start-2/4 top-full rounded-full -translate-x-1/2 w-20 h-20 border border-red-400 flex justify-center items-center">33%</div>
+                                        <div id="percentage" class="absolute top-60 left-1/2 rounded-full -translate-x-1/2 w-20 h-20 border border-red-400 flex justify-center items-center">33%</div>
                                         <!-- <button
                                             class="py-3 px-12 w-full mt-9 bg-white hover:bg-blue-950 hover:text-white tracking-wider text-lg"
                                             style="color: rgb(13.109.183); border: 1px solid rgb(13,109,183);" onclick="quizDashboard()">Join</button> -->
                                     </div>
                                 </div>
                                 <button
-                                            class="py-1 px-2 mt-80 bg-white hover:bg-blue-950 hover:text-white tracking-wider text-lg"
-                                            style="color: rgb(13.109.183); border: 1px solid rgb(13,109,183);" onclick="homePage()">Back to Home</button>
+                                            class="py-1 px-2 mt-96 bg-white hover:bg-blue-950 hover:text-white tracking-wider text-lg"
+                                            style="color: rgb(13,109,183); border: 1px solid rgb(13,109,183);" onclick="homePage()">Log out</button>
                             </div>
                         </div>
                     </div>
@@ -475,11 +495,11 @@
             //   `;
 
             // SVG for Up icon
-            const upSVG = `
-        //     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
-        //       <path fill-rule="evenodd" d="M11.78 9.78a.75.75 0 0 1-1.06 0L8 7.06 5.28 9.78a.75.75 0 0 1-1.06-1.06l3.25-3.25a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06Z" clip-rule="evenodd" />
-        //     </svg>
-        //   `;
+        //     const upSVG = `
+        // //     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+        // //       <path fill-rule="evenodd" d="M11.78 9.78a.75.75 0 0 1-1.06 0L8 7.06 5.28 9.78a.75.75 0 0 1-1.06-1.06l3.25-3.25a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06Z" clip-rule="evenodd" />
+        // //     </svg>
+        // //   `;
 
             // Toggle the content's max-height for smooth opening and closing
             if (content.style.maxHeight && content.style.maxHeight !== '0px') {

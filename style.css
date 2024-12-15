@@ -13,6 +13,11 @@ body{
     position: relative;
     height: 100vh;
     font-family: "Josefin Sans", sans-serif;
+    background-color: #e9ecef;
+}
+.dark_mode{
+    background-color: #393131 !important;
+    color: #fff;
 }
 .main-heading{
     font-size: 5rem;
@@ -35,6 +40,7 @@ body{
 }
 .close-btn{
     cursor: pointer;
+    color: #000;
 }
 .signup-btn{
     background-color: #10266b;
